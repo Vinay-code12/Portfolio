@@ -1,0 +1,32 @@
+---
+import { site, type NavLink } from '../data/site';
+
+interface Props {
+  links: NavLink[];
+  /** When set, the name in the nav links back to this URL (used on inner pages). */
+  homeHref?: string;
+}
+
+const { links, homeHref } = Astro.props;
+---
+
+<nav>
+  <div class="id">
+    <img id="log" src="/images/logo.jpg" alt={site.name} />
+    {homeHref ? <a href={homeHref}><h3>{site.name}</h3></a> : <h3>{site.name}</h3>}
+    <span class="opt">[ MENU ]</span>
+  </div>
+  <div>
+    <ul class="item">
+      {links.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+  <div class="con">
+    <a href="#contact" class="i" data-magnetic>Contact Me</a>
+    <a href="#contact" aria-label="Contact me">
+      <img src="/images/arrow_outward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png" alt="" class="ii" />
+    </a>
+  </div>
+</nav>

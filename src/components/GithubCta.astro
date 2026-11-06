@@ -1,0 +1,12 @@
+---
+import { site } from '../data/site';
+import ArrowIcon from './ArrowIcon.astro';
+---
+
+<div class="workfoot">
+  <span class="workfoot__label">More code on GitHub</span>
+  <a class="workfoot__link" href={site.github} target="_blank" rel="noopener" data-magnetic="0.08">
+    {site.githubLabel}
+    <ArrowIcon strokeWidth={2.2} size={24} />
+  </a>
+</div>

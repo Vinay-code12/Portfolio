@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Loader from '../components/Loader.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import GithubCta from '../components/GithubCta.astro';
+import Marquee from '../components/Marquee.astro';
+import Connect from '../components/Connect.astro';
+import Footer from '../components/Footer.astro';
+import type { NavLink } from '../data/site';
+
+const navLinks: NavLink[] = [
+  { href: '#about', label: '[ AboutUs ]' },
+  { href: '#work', label: '[ Work ]' },
+  { href: '/resume', label: '[ Resume ]' },
+  { href: '#connect', label: '[ Connect ]' },
+];
+
+const footerLinks: NavLink[] = [
+  { href: '#about', label: '[ AboutUs ]' },
+  { href: '#work', label: '[ Work ]' },
+  { href: '/resume', label: '[ Resume ]' },
+];
+---
+
+<BaseLayout title="Vinay Khanduri — Full-Stack Engineer">
+  <Loader />
+  <Nav links={navLinks} />
+  <Hero />
+  <About />
+  <Projects />
+  <GithubCta />
+  <Marquee />
+  <Connect />
+  <Footer links={footerLinks} />
+</BaseLayout>

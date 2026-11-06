@@ -1,0 +1,58 @@
+---
+import type { Project } from '../data/projects';
+import ArrowIcon from './ArrowIcon.astro';
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const num = String(index + 1).padStart(2, '0');
+const { preview } = project;
+---
+
+<article class="pcard" style={`--accent: ${project.accent};`}>
+  <span class="pcard__shade" aria-hidden="true"></span>
+
+  <div class="pcard__info">
+    <div class="pcard__meta">
+      <span class="pcard__num">{num}</span>
+      <span class="pcard__tag">{project.tag}</span>
+    </div>
+    <h3 class="pcard__title">{project.title}</h3>
+    <p class="pcard__desc">{project.description}</p>
+    <ul class="pcard__stack">
+      {project.stack.map((tech) => <li>{tech}</li>)}
+    </ul>
+    <a class="pcard__link" href={project.url} target="_blank" rel="noopener" data-magnetic>
+      {project.linkLabel ?? 'Visit Site'}
+      <span class="arrow-ic" aria-hidden="true"><ArrowIcon /></span>
+    </a>
+  </div>
+
+  <a class="pcard__media" href={project.url} target="_blank" rel="noopener" tabindex="-1" aria-label={project.mediaLabel}>
+    {preview.type === 'browser' ? (
+      <div class="browser">
+        <div class="browser__bar">
+          <i></i><i></i><i></i>
+          <span class="browser__url">{preview.displayUrl}</span>
+        </div>
+        <div class="browser__screen">
+          <div class="browser__fallback">{preview.fallback}</div>
+          <img src={preview.image} alt={preview.alt} loading="lazy" onerror="this.remove()" />
+        </div>
+      </div>
+    ) : (
+      <div class="browser browser--app">
+        <div class="phone-stage">
+          <div class="phone">
+            <span class="phone__eyebrow">{preview.eyebrow}</span>
+            <span class="phone__name">{preview.name}</span>
+            <span class="phone__sub">{preview.sub}</span>
+          </div>
+        </div>
+      </div>
+    )}
+  </a>
+</article>

@@ -1,0 +1,47 @@
+---
+import { site, type NavLink } from '../data/site';
+
+interface Props {
+  links: NavLink[];
+}
+
+const { links } = Astro.props;
+const arrow = '/images/arrow_outward_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.png';
+---
+
+<footer class="footer" id="contact">
+  <h2 class="hh">{site.phone}</h2>
+  <h1>{site.email}</h1>
+  <div class="pp">
+    {site.socials.map((social) => (
+      <a href={social.href} target="_blank" rel="noopener">
+        {social.label}<img src={arrow} alt="" class="arow" />
+      </a>
+    ))}
+  </div>
+  <br />
+  <div class="left">
+    <ul>
+      {links.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+  <p class="pp2">
+    Address
+    {site.address.map((line) => (
+      <>
+        <br />
+        {line}
+      </>
+    ))}
+  </p>
+  <div class="hi">
+    <h1><b>{site.name.toUpperCase()}</b></h1>
+    <p>
+      © All right reserved.
+      <br />
+      2025 VinayKhanduri
+    </p>
+  </div>
+</footer>

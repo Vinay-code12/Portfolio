@@ -1,3 +1,7 @@
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+
 /* =========================================================
    Mobile menu
    ========================================================= */
@@ -21,9 +25,8 @@ if (menuBtn && menu) {
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // If GSAP didn't load (offline / blocked CDN) or the user prefers less motion,
-  // show the plain page instead of animating.
-  if (!window.gsap || !window.ScrollTrigger || reduceMotion) {
+  // If the user prefers less motion, show the plain page instead of animating.
+  if (reduceMotion) {
     removeLoader();
     return;
   }
@@ -85,13 +88,10 @@ if (menuBtn && menu) {
   }
 
   /* ---------- Smooth scrolling (Lenis) ---------- */
-  let lenis = null;
-  if (window.Lenis) {
-    lenis = new Lenis({ lerp: 0.1 });
-    lenis.on("scroll", ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
-    gsap.ticker.lagSmoothing(0);
-  }
+  const lenis = new Lenis({ lerp: 0.1 });
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
 
   const lockScroll = (locked) => {
     if (lenis) locked ? lenis.stop() : lenis.start();

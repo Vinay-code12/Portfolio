@@ -1,0 +1,17 @@
+---
+import { projects } from '../data/projects';
+import ProjectCard from './ProjectCard.astro';
+
+const count = String(projects.length).padStart(2, '0');
+---
+
+<section class="work" id="work">
+  <div class="work__head">
+    <span>( Selected Projects )</span>
+    <span>{count} Projects</span>
+  </div>
+
+  <div class="work__list">
+    {projects.map((project, index) => <ProjectCard project={project} index={index} />)}
+  </div>
+</section>

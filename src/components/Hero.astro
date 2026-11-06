@@ -1,0 +1,22 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="hero">
+  <h1>full-stack engineer</h1>
+  <h4>based in india</h4>
+  <img src="/images/logo.jpg" alt={site.name} />
+  <p>
+    I build web apps end to end — React on the front,
+    <br />
+    Node.js, Express, MongoDB &amp; PostgreSQL behind it.
+    <br />
+    Backend &amp; AI Developer
+  </p>
+</div>
+
+<div class="herofoot">
+  <a href="#connect"><span>AVAILABLE FOR collaboration.</span></a>
+  <a href="#connect" aria-label="Start a collaboration"><img src="/images/rightarr.png" alt="" class="arow" /></a>
+  <h5><a href={`mailto:${site.email}`}>{site.email}</a></h5>
+</div>

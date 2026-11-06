@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ArrowIcon from '../components/ArrowIcon.astro';
+import { site, type NavLink } from '../data/site';
+
+const resumePdf = '/Vinay-Khanduri-Resume.pdf';
+
+const navLinks: NavLink[] = [{ href: '/', label: '[ Home ]' }];
+
+const footerLinks: NavLink[] = [
+  { href: '/#about', label: '[ AboutUs ]' },
+  { href: '/#work', label: '[ Work ]' },
+  { href: '/#connect', label: '[ Connect ]' },
+];
+---
+
+<BaseLayout title={`Resume — ${site.name}`}>
+  <Nav links={navLinks} homeHref="/" />
+
+  <div class="resume-head">
+    <div class="about" id="about">
+      <h1>RESUME</h1>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="leeft">
+      <img src="/images/logo.jpg" alt={site.name} id="ll" />
+    </div>
+    <div class="riiight">
+      <h1 class="h1">{site.role}</h1>
+      <p style="color: azure;">
+        Hi, I’m {site.name} — a full-stack engineer and MCA graduate (2026) from Chandigarh.
+        <br />
+        I build with Node.js, Express, React, MongoDB and PostgreSQL, and I’m currently a Backend &amp; AI Developer at Mavriq AI.
+        <br />
+        I enjoy designing clean REST APIs and data models, and shipping features for real client products.
+      </p>
+      <div class="resume-actions">
+        <a class="resume-btn" href={resumePdf} download="Vinay-Khanduri-Resume.pdf" data-magnetic>
+          Download Resume
+          <span class="arrow-ic" aria-hidden="true"><ArrowIcon variant="download" size={15} /></span>
+        </a>
+        <a class="resume-link" href={resumePdf} target="_blank" rel="noopener">View PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <Footer links={footerLinks} />
+</BaseLayout>

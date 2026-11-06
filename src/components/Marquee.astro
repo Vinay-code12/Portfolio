@@ -1,0 +1,16 @@
+---
+import { skills } from '../data/site';
+---
+
+<div class="marquee">
+  <div class="marquee__track">
+    <ul class="marquee__group">
+      {skills.map((skill) => (
+        <>
+          <li class={skill.outline ? 'o' : undefined}>{skill.label}</li>
+          <li class="star" aria-hidden="true">✦</li>
+        </>
+      ))}
+    </ul>
+  </div>
+</div>
