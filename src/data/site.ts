@@ -9,9 +9,9 @@ export const site = {
   githubLabel: 'github.com/Vinay-code12',
   address: ['#1483 Sector-22B', 'Chandigarh,INDIA'],
   socials: [
-    { label: 'instagram', href: 'https://www.instagram.com/vinny9.7/' },
+    { label: 'instagram', href: 'https://www.instagram.com/vinny.csv/' },
     { label: 'Github', href: 'https://github.com/Vinay-code12' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vinay-khanduri-2b5512330' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/vinay-khanduri-' },
   ],
 };
 
